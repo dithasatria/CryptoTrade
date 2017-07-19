@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_market"
+            android:icon="@drawable/ic_menu_market"
+            android:title="Market" />
+        <item
+            android:id="@+id/nav_alert"
+            android:icon="@drawable/ic_menu_alert"
+            android:title="Alarm" />
+        <item
+            android:id="@+id/nav_advchart"
+            android:icon="@drawable/ic_menu_chart"
+            android:title="Advanced Chart" />
+        <item
+            android:id="@+id/nav_news"
+            android:icon="@drawable/ic_menu_news"
+            android:title="News" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_account"
+                android:icon="@drawable/ic_menu_account"
+                android:title="Account" />
+            <item
+                android:id="@+id/nav_setting"
+                android:icon="@drawable/ic_menu_settings"
+                android:title="Settings" />
+        </menu>
+    </item>
+
+</menu>
