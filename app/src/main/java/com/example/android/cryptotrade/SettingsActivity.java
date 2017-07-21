@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -46,10 +48,10 @@ public class SettingsActivity extends AppCompatActivity {
                         "10 Second",
                         "15 Second",
                         "30 Second",
-                        "1 Minutes",
-                        "3 Minutes",
-                        "5 Minutes",
-                        "10 Minutes"};
+                        "60 Second",
+                        "180 Second",
+                        "300 Second",
+                        "600 Second"};
 
                 builder.setItems(refreshRate, new DialogInterface.OnClickListener() {
                     @Override
@@ -58,6 +60,7 @@ public class SettingsActivity extends AppCompatActivity {
                             case 0:
                                 refreshTime = "5000";
                                 BTN_REFRESH_RATE.setText("5 Second");
+                                manager.saveString(getApplicationContext(), "refreshRate", refreshTime);
                                 break;
                             case 1:
                                 refreshTime = "10000";
@@ -66,37 +69,59 @@ public class SettingsActivity extends AppCompatActivity {
                                 break;
                             case 2:
                                 refreshTime = "15000";
-                                BTN_REFRESH_RATE.setText("15 Second");
+                                BTN_REFRESH_RATE.setText("35 Second");
+                                manager.saveString(getApplicationContext(), "refreshRate", refreshTime);
                                 break;
                             case 3:
                                 refreshTime = "30000";
                                 BTN_REFRESH_RATE.setText("30 Second");
+                                manager.saveString(getApplicationContext(), "refreshRate", refreshTime);
                                 break;
                             case 4:
                                 refreshTime = "60000";
-                                BTN_REFRESH_RATE.setText("1 Minutes");
+                                BTN_REFRESH_RATE.setText("60 Second");
+                                manager.saveString(getApplicationContext(), "refreshRate", refreshTime);
                                 break;
                             case 5:
                                 refreshTime = "90000";
-                                BTN_REFRESH_RATE.setText("3 Minutes");
+                                BTN_REFRESH_RATE.setText("180 Second");
+                                manager.saveString(getApplicationContext(), "refreshRate", refreshTime);
                                 break;
                             case 6:
                                 refreshTime = "300000";
-                                BTN_REFRESH_RATE.setText("5 Minutes");
+                                BTN_REFRESH_RATE.setText("300 Second");
+                                manager.saveString(getApplicationContext(), "refreshRate", refreshTime);
                                 break;
                             case 7:
                                 refreshTime = "600000";
-                                BTN_REFRESH_RATE.setText("10 Minutes");
+                                BTN_REFRESH_RATE.setText("600 Minutes");
+                                manager.saveString(getApplicationContext(), "refreshRate", refreshTime);
                                 break;
                         }
                     }
                 });
-
-                manager.saveString(getApplicationContext(), "refreshRate", refreshTime);
 // create and show the alert dialog
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id){
+            case android.R.id.home:
+                this.finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
     }
 }

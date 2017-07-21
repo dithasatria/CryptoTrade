@@ -1,18 +1,65 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@color/colorWhite"
-tools:context="com.example.android.cryptotrade.fragments.AlertFragment">
-
-<!-- TODO: Update blank fragment layout -->
-<ListView
-    android:id="@+id/lvAlert"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context="com.example.android.cryptotrade.fragments.AlertFragment">
 
-</ListView>
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/tvAlertNoData"
+        android:padding="15sp"
+        android:text="No Data Available"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/layoutAlertTitle"
+            android:layout_width="match_parent"
+            android:padding="10sp"
+            android:background="@color/colorAccent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="CRYPTO NAME"
+                android:textColor="@color/colorWhite"
+                android:textSize="12sp"
+                android:layout_weight="0.4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="PRICE"
+                android:textSize="12sp"
+                android:textColor="@color/colorWhite"
+                android:layout_weight="0.4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="STATUS"
+                android:textSize="12sp"
+                android:textColor="@color/colorWhite"
+                android:layout_weight="0.2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lvAlert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layoutAlertTitle">
+
+        </ListView>
+    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

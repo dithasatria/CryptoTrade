@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         View header = navigationView.getHeaderView(0);
 
+        navigationView.setCheckedItem(R.id.nav_market);
+
         TextView TV_PRICE_BTC = (TextView) header.findViewById(R.id.tvNavHeaderPriceBTC);
 
         TV_PRICE_BTC.setText("TES");
@@ -67,7 +69,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 

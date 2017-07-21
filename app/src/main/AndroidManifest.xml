@@ -33,6 +33,7 @@
             android:name=".detailcrypto.CryptoDetail"
             android:label="@string/title_activity_crypto_detail"
             android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

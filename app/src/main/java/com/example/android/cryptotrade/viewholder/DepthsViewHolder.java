@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.example.android.cryptotrade.R;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -26,9 +27,16 @@ public class DepthsViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(List<String> buy, List<String> sell){
-        TV_BUY_PRICE.setText(sell.get(0));
-        TV_BUY_SUM.setText(sell.get(1));
-        TV_SELL_PRICE.setText(buy.get(0));
-        TV_SELL_SUM.setText(buy.get(1));
+        Double sellGet0 = Double.parseDouble(sell.get(0));
+        Double sellGet1 = Double.parseDouble(sell.get(1));
+        Double buyGet0 = Double.parseDouble(buy.get(0));
+        Double buyGet1 = Double.parseDouble(buy.get(1));
+
+        DecimalFormat format = new DecimalFormat("0.00000");
+        DecimalFormat formatPrice = new DecimalFormat("0.00000000");
+        TV_BUY_PRICE.setText(formatPrice.format(sellGet0));
+        TV_BUY_SUM.setText(format.format(sellGet1));
+        TV_SELL_PRICE.setText(formatPrice.format(buyGet0));
+        TV_SELL_SUM.setText(format.format(buyGet1));
     }
 }

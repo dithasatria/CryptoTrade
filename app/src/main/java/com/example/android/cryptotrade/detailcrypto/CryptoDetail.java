@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.android.cryptotrade.R;
 import com.example.android.cryptotrade.utilities.SaveData;
@@ -67,7 +69,9 @@ public class CryptoDetail extends AppCompatActivity {
     }
 
     private void SetSubtitle(){
-        if(URLAddress.TOOLBAR_NAME.equals("BTS/BTC")){
+        if (URLAddress.TOOLBAR_NAME.equals("BTC/IDR")){
+            subtitle = SaveData.PriceBTC;
+        } else if(URLAddress.TOOLBAR_NAME.equals("BTS/BTC")){
             subtitle = SaveData.PriceBTS + " BTC";
         } else if(URLAddress.TOOLBAR_NAME.equals("DASH/BTC")){
             subtitle = SaveData.PriceDASH + " BTC";
@@ -137,5 +141,24 @@ public class CryptoDetail extends AppCompatActivity {
             }
             return null;
         }
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id){
+            case android.R.id.home:
+                this.finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
     }
 }

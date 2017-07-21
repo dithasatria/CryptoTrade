@@ -2,8 +2,6 @@ package com.example.android.cryptotrade;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -17,6 +15,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.android.cryptotrade.fragments.AlertFragment;
+import com.example.android.cryptotrade.pojo.Alert;
 import com.example.android.cryptotrade.sql.DataHelper;
 
 /**
@@ -25,7 +24,6 @@ import com.example.android.cryptotrade.sql.DataHelper;
 
 public class AlertActivity extends AppCompatActivity {
 
-    protected Cursor cursor;
     DataHelper dbHelper;
     EditText ET_SELECT_CRYPTO, ET_ALERT_PRICE;
     Switch SWITCH;
@@ -39,6 +37,7 @@ public class AlertActivity extends AppCompatActivity {
 
 
         dbHelper = new DataHelper(this);
+        dbHelper.open();
         context = this;
 
         ET_SELECT_CRYPTO = (EditText) findViewById(R.id.etSelectCrypto);
@@ -133,14 +132,24 @@ public class AlertActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id){
             case R.id.menu_proses :
+                Alert alert = new Alert();
+                alert.setCryptoName(ET_SELECT_CRYPTO.getText().toString());
+                alert.setPrice(ET_ALERT_PRICE.getText().toString());
+                alert.setStatus(check);
+
+                dbHelper.CreateAlert(alert);
+                dbHelper.Close();
+                /*
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
                 db.execSQL("insert into alert(id, cryptoname, price, status) values('" +
-                        null + "','" +
+                        2 + "','" +
                         ET_SELECT_CRYPTO.getText().toString() + "','" +
                         ET_ALERT_PRICE.getText().toString() + "','" +
                         check + "')");
+                        */
                 Toast.makeText(getApplicationContext(), "Berhasil", Toast.LENGTH_LONG).show();
                 AlertFragment.alertFragment.RefreshList();
+                this.finish();
                 //startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 return true;
             case android.R.id.home:
